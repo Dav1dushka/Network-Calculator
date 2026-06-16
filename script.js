@@ -1,14 +1,23 @@
 function calculateNetwork() {
 
-    const ip = document.getElementById("ip").value;
+    const ip = document.getElementById("ip").value.trim();
     const cidr = parseInt(document.getElementById("cidr").value);
 
-    const parts = ip.split(".");
+    const ipRegex =
+        /^(25[0-5]|2[0-4][0-9]|1?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|1?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|1?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|1?[0-9][0-9]?)$/;
 
-    if(parts.length !== 4){
-        alert("Invalid IP");
+    if (!ipRegex.test(ip)) {
+
+        document.getElementById("result").innerHTML = `
+            <div class="error">
+                Invalid IPv4 Address
+            </div>
+        `;
+
         return;
     }
+
+    const parts = ip.split(".");
 
     const network =
         `${parts[0]}.${parts[1]}.${parts[2]}.0`;
@@ -20,14 +29,29 @@ function calculateNetwork() {
         Math.pow(2, 32 - cidr) - 2;
 
     document.getElementById("result").innerHTML = `
-        <h3>Results</h3>
 
-        <p><b>Network:</b> ${network}</p>
+        <div class="result-grid">
 
-        <p><b>Broadcast:</b> ${broadcast}</p>
+            <div class="card">
+                <h3>Network</h3>
+                <p>${network}</p>
+            </div>
 
-        <p><b>CIDR:</b> /${cidr}</p>
+            <div class="card">
+                <h3>Broadcast</h3>
+                <p>${broadcast}</p>
+            </div>
 
-        <p><b>Hosts:</b> ${hosts}</p>
+            <div class="card">
+                <h3>CIDR</h3>
+                <p>/${cidr}</p>
+            </div>
+
+            <div class="card">
+                <h3>Hosts</h3>
+                <p>${hosts}</p>
+            </div>
+
+        </div>
     `;
 }
