@@ -9,49 +9,27 @@ function calculateNetwork() {
     if (!ipRegex.test(ip)) {
 
         document.getElementById("result").innerHTML = `
-            <div class="error">
-                Invalid IPv4 Address
-            </div>
-        `;
+<div class="result-box">
 
-        return;
-    }
+    <div class="result-row">
+        <span class="label">Network Address</span>
+        <span class="value">${network}</span>
+    </div>
 
-    const parts = ip.split(".");
+    <div class="result-row">
+        <span class="label">Broadcast Address</span>
+        <span class="value">${broadcast}</span>
+    </div>
 
-    const network =
-        `${parts[0]}.${parts[1]}.${parts[2]}.0`;
+    <div class="result-row">
+        <span class="label">CIDR</span>
+        <span class="value">/${cidr}</span>
+    </div>
 
-    const broadcast =
-        `${parts[0]}.${parts[1]}.${parts[2]}.255`;
+    <div class="result-row">
+        <span class="label">Usable Hosts</span>
+        <span class="value">${hosts}</span>
+    </div>
 
-    const hosts =
-        Math.pow(2, 32 - cidr) - 2;
-
-    document.getElementById("result").innerHTML = `
-
-        <div class="result-grid">
-
-            <div class="card">
-                <h3>Network</h3>
-                <p>${network}</p>
-            </div>
-
-            <div class="card">
-                <h3>Broadcast</h3>
-                <p>${broadcast}</p>
-            </div>
-
-            <div class="card">
-                <h3>CIDR</h3>
-                <p>/${cidr}</p>
-            </div>
-
-            <div class="card">
-                <h3>Hosts</h3>
-                <p>${hosts}</p>
-            </div>
-
-        </div>
-    `;
-}
+</div>
+`;
