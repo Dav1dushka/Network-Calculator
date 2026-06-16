@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Network Calculator</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="container">
+
+    <h1>Network Calculator</h1>
+
+    <input type="text" id="ip" placeholder="IP Address (192.168.1.10)">
+
+    <select id="cidr">
+        <option value="24">/24</option>
+        <option value="25">/25</option>
+        <option value="26">/26</option>
+        <option value="27">/27</option>
+        <option value="28">/28</option>
+        <option value="29">/29</option>
+        <option value="30">/30</option>
+    </select>
+
+    <button onclick="calculateNetwork()">
+        Calculate
+    </button>
+
+    <div id="result"></div>
+
+</div>
+
+<script src="script.js"></script>
+
+</body>
+</html>
