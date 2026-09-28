@@ -1,38 +1,102 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Network Calculator</title>
+    <meta name="description" content="Calculate IPv4 network details from an address and CIDR prefix.">
+    <meta name="theme-color" content="#f3f6fb">
+    <title>IPv4 Network Calculator</title>
     <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
 </head>
 <body>
+    <main class="app-shell">
+        <header class="page-header">
+            <div class="brand-icon" aria-hidden="true">/</div>
+            <div>
+                <p class="eyebrow">NETWORKING TOOL</p>
+                <h1>IPv4 Network Calculator</h1>
+                <p class="page-subtitle">Enter an IPv4 address and CIDR prefix to inspect its subnet.</p>
+            </div>
+        </header>
 
-<div class="container">
+        <section class="panel calculator-panel" aria-labelledby="calculatorHeading">
+            <div class="panel-heading">
+                <div>
+                    <p class="eyebrow">INPUT</p>
+                    <h2 id="calculatorHeading">Subnet details</h2>
+                </div>
+            </div>
 
-    <h1>Network Calculator</h1>
+            <form id="calculatorForm" novalidate>
+                <div class="field">
+                    <label for="ip">IPv4 address</label>
+                    <input id="ip" name="ip" type="text" inputmode="decimal" autocomplete="off" value="192.168.1.10" aria-describedby="ipHelp" required>
+                    <small id="ipHelp">Example: 192.168.1.10</small>
+                </div>
 
-    <input type="text" id="ip" placeholder="IP Address (192.168.1.10)">
+                <div class="field">
+                    <label for="cidr">CIDR prefix</label>
+                    <select id="cidr" name="cidr">
+                        <option value="0">/0</option>
+                        <option value="1">/1</option>
+                        <option value="2">/2</option>
+                        <option value="3">/3</option>
+                        <option value="4">/4</option>
+                        <option value="5">/5</option>
+                        <option value="6">/6</option>
+                        <option value="7">/7</option>
+                        <option value="8">/8</option>
+                        <option value="9">/9</option>
+                        <option value="10">/10</option>
+                        <option value="11">/11</option>
+                        <option value="12">/12</option>
+                        <option value="13">/13</option>
+                        <option value="14">/14</option>
+                        <option value="15">/15</option>
+                        <option value="16">/16</option>
+                        <option value="17">/17</option>
+                        <option value="18">/18</option>
+                        <option value="19">/19</option>
+                        <option value="20">/20</option>
+                        <option value="21">/21</option>
+                        <option value="22">/22</option>
+                        <option value="23">/23</option>
+                        <option value="24" selected>/24</option>
+                        <option value="25">/25</option>
+                        <option value="26">/26</option>
+                        <option value="27">/27</option>
+                        <option value="28">/28</option>
+                        <option value="29">/29</option>
+                        <option value="30">/30</option>
+                        <option value="31">/31</option>
+                        <option value="32">/32</option>
+                    </select>
+                </div>
 
-    <select id="cidr">
-        <option value="24">/24</option>
-        <option value="25">/25</option>
-        <option value="26">/26</option>
-        <option value="27">/27</option>
-        <option value="28">/28</option>
-        <option value="29">/29</option>
-        <option value="30">/30</option>
-    </select>
+                <button class="button button-primary" type="submit">Calculate subnet</button>
+            </form>
+            <p id="message" class="message" role="status" aria-live="polite"></p>
+        </section>
 
-    <button onclick="calculateNetwork()">
-        Calculate
-    </button>
+        <section id="resultsSection" class="panel results-panel" aria-labelledby="resultsHeading" hidden>
+            <div class="results-heading-row">
+                <div class="panel-heading">
+                    <div>
+                        <p class="eyebrow">RESULT</p>
+                        <h2 id="resultsHeading">Network summary</h2>
+                    </div>
+                </div>
+                <button id="copyButton" class="button button-secondary" type="button">Copy results</button>
+            </div>
 
-    <div id="result"></div>
+            <dl id="resultList" class="result-list"></dl>
+            <p id="subnetNote" class="subnet-note"></p>
+        </section>
 
-</div>
-
-<script src="script.js"></script>
-
+        <footer class="page-footer">
+            <p>Calculations run in your browser. No address data is sent to a server.</p>
+        </footer>
+    </main>
 </body>
 </html>
