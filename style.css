@@ -150,6 +150,47 @@ p {
     font-size: 0.71rem;
 }
 
+.quick-examples {
+    display: grid;
+    gap: 9px;
+    margin-top: 19px;
+}
+
+.quick-examples-label {
+    color: var(--muted);
+    font-size: 0.75rem;
+    font-weight: 650;
+}
+
+.example-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 7px;
+}
+
+.example-button {
+    min-height: 32px;
+    padding: 0 10px;
+    border: 1px solid #e0e6f2;
+    border-radius: 7px;
+    color: #4e5e7b;
+    background: #fbfcff;
+    font-size: 0.72rem;
+    font-weight: 600;
+    transition: background-color 140ms ease, border-color 140ms ease;
+}
+
+.example-button:hover {
+    border-color: #b6c4f2;
+    color: var(--blue-dark);
+    background: #f3f5ff;
+}
+
+.example-button:focus-visible {
+    outline: 3px solid rgba(56, 88, 214, 0.23);
+    outline-offset: 2px;
+}
+
 .button {
     min-height: 44px;
     padding: 0 15px;
@@ -212,6 +253,13 @@ p {
     justify-content: space-between;
     gap: 15px;
     margin-bottom: 17px;
+}
+
+.result-actions {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+    gap: 8px;
 }
 
 .result-list {

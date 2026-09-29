@@ -76,6 +76,15 @@
 
                 <button class="button button-primary" type="submit">Calculate subnet</button>
             </form>
+            <div class="quick-examples" aria-label="Example subnet calculations">
+                <span class="quick-examples-label">Try an example</span>
+                <div class="example-buttons">
+                    <button class="example-button" type="button" data-example data-ip="192.168.1.10" data-prefix="24">Home network /24</button>
+                    <button class="example-button" type="button" data-example data-ip="172.16.5.10" data-prefix="20">Office /20</button>
+                    <button class="example-button" type="button" data-example data-ip="10.10.10.10" data-prefix="31">Point-to-point /31</button>
+                    <button class="example-button" type="button" data-example data-ip="203.0.113.7" data-prefix="32">Single host /32</button>
+                </div>
+            </div>
             <p id="message" class="message" role="status" aria-live="polite"></p>
         </section>
 
@@ -87,7 +96,10 @@
                         <h2 id="resultsHeading">Network summary</h2>
                     </div>
                 </div>
-                <button id="copyButton" class="button button-secondary" type="button">Copy results</button>
+                <div class="result-actions">
+                    <button id="shareButton" class="button button-secondary" type="button">Copy share link</button>
+                    <button id="copyButton" class="button button-secondary" type="button">Copy results</button>
+                </div>
             </div>
 
             <dl id="resultList" class="result-list"></dl>
@@ -95,7 +107,7 @@
         </section>
 
         <footer class="page-footer">
-            <p>Calculations run in your browser. No address data is sent to a server.</p>
+            <p>Calculations run in your browser. A share link includes the entered address and CIDR prefix.</p>
         </footer>
     </main>
 </body>
