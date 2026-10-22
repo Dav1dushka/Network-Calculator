@@ -12,7 +12,7 @@
         if (octets.length !== 4) return null;
 
         const numbers = octets.map((octet) => {
-            if (!/^(0|[1-9]\\d{0,2})$/.test(octet)) return null;
+            if (!/^(0|[1-9]\d{0,2})$/.test(octet)) return null;
             const number = Number(octet);
             return number <= 255 ? number : null;
         });
