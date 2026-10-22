@@ -26,7 +26,7 @@ test("aligns a /20 network boundary correctly", () => {
     assert.equal(value(result, "Broadcast address"), "172.16.15.255");
     assert.equal(value(result, "Subnet mask"), "255.255.240.0");
     assert.equal(value(result, "Wildcard mask"), "0.0.15.255");
-    assert.equal(value(result, "Usable host addresses"), "4094");
+    assert.equal(value(result, "Usable host addresses"), "4,094");
 });
 
 test("handles /31 point-to-point networks", () => {
